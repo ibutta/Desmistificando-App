@@ -199,12 +199,13 @@ public class ShowArticleActivity extends AppCompatActivity {
             try {
 
                 articleDoc = Jsoup.connect("https://www.jusbrasil.com.br/artigos").get();
-                articleDoc.selectFirst("script[src*=/feed/][src$=.js]").attr("src","file:///home/igao/workspace_web/jb_articles_html_source/WebContent/mod_feed.js");
+                articleDoc.selectFirst("script[src*=/feed/][src$=.js]").attr("src","");
 //                articleDoc = Jsoup.connect(articleURL).get();
 //                articleDoc.select("div.JB-2").first()
 //                    .html("");
 //                articleDoc.select("div.comments").first()
 //                        .html("");
+
 
             }catch(IOException e){
                 Log.e(getClass().getName(), e.getMessage());
@@ -217,8 +218,8 @@ public class ShowArticleActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 //                    articleWebView.loadDataWithBaseURL(articleURL, articleDoc.html(), "text/html", "UTF-8", null);
-//                    articleWebView.loadDataWithBaseURL("https://www.jusbrasil.com.br/artigos", articleDoc.html(), "text/html", "UTF-8", null);
-                    articleWebView.loadData(articleDoc.html(), "text/html", "UTF-8");
+                    articleWebView.loadDataWithBaseURL("https://www.jusbrasil.com.br/artigos", articleDoc.html(), "text/html", "UTF-8", null);
+//                    articleWebView.loadData(articleDoc.html(), "text/html", "UTF-8");
                 }
             });
         }
